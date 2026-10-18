@@ -61,6 +61,7 @@ jobs:
 
       - name: Add the Android platform
         run: |
+          mkdir -p www
           if [ ! -d platforms/android ]; then npx cordova platform add android; fi
 
       - name: Build the debug APK
