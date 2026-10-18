@@ -36,6 +36,9 @@ jobs:
         run: |
           yes | sudo env "JAVA_HOME=$JAVA_HOME" "PATH=$PATH" "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
           sudo chmod -R a+rwX "$ANDROID_HOME" || true
+          # sdkmanager ran as root: make sure the runner user owns its config dirs (debug keystore goes here)
+          sudo mkdir -p "$HOME/.android" "$HOME/.config/.android"
+          sudo chown -R "$(id -un):$(id -gn)" "$HOME/.android" "$HOME/.config"
 
       - name: Cache Gradle
         uses: actions/cache@v4
