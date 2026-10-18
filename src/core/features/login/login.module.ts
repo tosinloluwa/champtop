@@ -39,11 +39,16 @@ export async function getLoginServices(): Promise<Type<unknown>[]> {
 const appRoutes: Routes = [
     {
         path: 'login',
+        // CHAMPTOP_PUBLIC_WELCOME_V1
         loadChildren: () => [
+            {
+                path: 'champtop',
+                loadComponent: () => import('@features/login/pages/champtop/champtop'),
+            },
             {
                 path: '',
                 pathMatch: 'full',
-                redirectTo: 'sites',
+                redirectTo: 'champtop',
             },
             {
                 path: 'site',

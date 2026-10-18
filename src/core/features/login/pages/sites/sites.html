@@ -21,6 +21,7 @@
     </ion-toolbar>
 </ion-header>
 <ion-content class="limited-width">
+    <ion-button expand="block" class="ion-margin" (click)="champtopHome()">Explore ChampTop ↗</ion-button>
     <core-loading [hideUntil]="loaded">
         <core-sites-list [accountsList]="accountsList" [sitesClickable]="true" (onSiteClicked)="login($event)">
             <ng-template #siteItem let-site="site" let-isCurrentSite="isCurrentSite">

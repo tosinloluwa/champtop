@@ -82,8 +82,8 @@ export class CoreSiteLogoComponent implements OnInit, OnDestroy {
     readonly logoLoaded = signal(false);
     readonly logoError = signal(false);
     readonly fallbackLogo = computed(() => this.logoType() === CoreSiteLogoType.TOP
-        ? 'assets/img/top_logo.png'
-        : 'assets/img/login_logo.png');
+        ? 'assets/img/champtop-logo.svg'
+        : 'assets/img/champtop-logo.svg');
 
     readonly appName = signal(CoreConstants.CONFIG.appname);
 

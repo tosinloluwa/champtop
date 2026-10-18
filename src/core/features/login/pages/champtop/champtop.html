@@ -1,0 +1,89 @@
+<ion-header class="ct-public-header">
+    <ion-toolbar>
+        <button class="ct-brand" slot="start" type="button" (click)="select('home')" aria-label="ChampTop home">
+            <img [src]="imageRoot + 'logo.svg'" alt="ChampTop Academy" width="148" height="55">
+        </button>
+        <ion-buttons slot="end">
+            <ion-button class="ct-nav-signin" (click)="signIn()">Sign in <span aria-hidden="true">↗</span></ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content #publicContent class="ct-public-content" [class.ct-welcome-viewport]="page === 'home'" [scrollY]="page !== 'home'">
+    @if (page === 'home') {
+        <main class="ct-page ct-home">
+            <section class="ct-hero">
+                <div class="ct-hero-copy">
+                    <p class="ct-kicker"><span></span> BIG IDEAS START SMALL</p>
+                    <h1>Learn. <span class="ct-teal">Build.</span><br><span class="ct-coral">Create.</span></h1>
+                    <p class="ct-lead">Turn your curiosity into something brilliant.</p>
+                    <div class="ct-hero-actions">
+                        <button class="ct-primary" type="button" (click)="signIn()">Let’s go <span aria-hidden="true">↗</span></button>
+                        <button class="ct-secondary" type="button" (click)="select('programmes')">Explore courses</button>
+                    </div>
+                    <p class="ct-fine">New here? <button type="button" (click)="signup()">Create your account →</button></p>
+                </div>
+                <div class="ct-photo-grid" aria-label="Illustrative ChampTop learning scenes">
+                    <div class="ct-photo-main"><img [src]="imageRoot + 'hero.png'" alt="Illustrative young learner exploring coding" fetchpriority="high"></div>
+                    <div class="ct-checker ct-checker-yellow" aria-hidden="true"><span>✦</span><strong>IDEAS<br>WELCOME.</strong></div>
+                    <div class="ct-photo-mini"><img [src]="imageRoot + 'animation.png'" alt="Illustrative creative animation learning" loading="lazy"></div>
+                    <div class="ct-checker ct-checker-blue" aria-hidden="true"><span>&lt;/&gt;</span><strong>MAKE<br>SOMETHING.</strong></div>
+                    <div class="ct-photo-mini ct-last-photo"><img [src]="imageRoot + 'robotics.png'" alt="Illustrative robotics learning" loading="lazy"></div>
+                    <div class="ct-photo-sticker" aria-hidden="true">A little curiosity.<br><strong>Big possibilities.</strong></div>
+                </div>
+            </section>
+        </main>
+    }
+    @if (page === 'about') {
+        <main class="ct-page ct-inner-page">
+            <p class="ct-kicker">HELLO, WE’RE CHAMPTOP</p><h1>A place for<br><span class="ct-teal">what’s next.</span></h1>
+            <p class="ct-lead">We help young people turn curiosity into practical skills, creative confidence and real projects.</p>
+            <div class="ct-wide-photo"><img [src]="imageRoot + 'hero.png'" alt="Illustrative ChampTop learner" loading="lazy"></div>
+            <section class="ct-value-grid">
+                <article class="ct-mint"><span aria-hidden="true">01</span><h2>Learn by doing.</h2><p>Explore coding, animation, robotics and financial literacy through practical activities.</p></article>
+                <article class="ct-peach"><span aria-hidden="true">02</span><h2>Make room for ideas.</h2><p>Experiment, ask questions and develop confidence as your skills grow.</p></article>
+                <article class="ct-lilac"><span aria-hidden="true">03</span><h2>Keep moving forward.</h2><p>Progress from foundations to more challenging work, one project at a time.</p></article>
+            </section>
+            <button class="ct-primary" type="button" (click)="select('programmes')">Find your programme <span aria-hidden="true">↗</span></button>
+        </main>
+    }
+    @if (page === 'programmes') {
+        <main class="ct-page ct-inner-page">
+            <p class="ct-kicker">PICK YOUR NEXT ADVENTURE</p><h1>Big skills.<br><span class="ct-coral">Your way.</span></h1>
+            <p class="ct-lead">Four creative pathways. Start at the level that fits you.</p>
+            <div class="ct-programme-grid">
+                @for (programme of programmes; track programme.title) {
+                    <article class="ct-programme" [attr.data-colour]="programme.colour">
+                        @if (programme.image) {<img [src]="imageRoot + programme.image" [alt]="'Illustrative ' + programme.title + ' learning scene'" loading="lazy">}
+                        @else {<div class="ct-money-art" aria-hidden="true"><span>£</span><b>SMALL STEPS.<br>SMART CHOICES.</b></div>}
+                        <div class="ct-programme-body"><p class="ct-kicker">{{ programme.tag }}</p><h2>{{ programme.title }}</h2><p>{{ programme.text }}</p>
+                            <div class="ct-levels"><span>Beginner · 6 months</span><span>Intermediate · 12 months</span><span>Advanced · 24 months</span></div>
+                            <button class="ct-text-button" type="button" (click)="signup()">View enrolment options <span aria-hidden="true">↗</span></button>
+                        </div>
+                    </article>
+                }
+            </div>
+            <p class="ct-disclosure">Enrolment options open on the ChampTop website. Review current fees, programme availability and payment terms there before paying. This public guide does not grant course access.</p>
+        </main>
+    }
+    @if (page === 'teaching') {
+        <main class="ct-page ct-inner-page">
+            <p class="ct-kicker">GUIDANCE THAT HELPS YOU GROW</p><h1>Real questions.<br><span class="ct-teal">Fresh possibilities.</span></h1>
+            <p class="ct-lead">Tutor-led learning with practical activities and room to experiment.</p>
+            <div class="ct-wide-photo"><img [src]="imageRoot + 'teaching.png'" alt="Illustrative educators discussing a learning programme" loading="lazy"></div>
+            <section class="ct-value-grid"><article class="ct-mint"><span aria-hidden="true">↗</span><h2>Learn together.</h2><p>Live online sessions combine explanations, demonstrations and hands-on practice.</p></article>
+                <article class="ct-lilac"><span aria-hidden="true">✦</span><h2>Find your pace.</h2><p>Teaching takes learners’ age, experience, ability and learning goals into account.</p></article>
+                <article class="ct-peach"><span aria-hidden="true">✓</span><h2>Try. Learn. Try again.</h2><p>Questions, projects and assignments help you put new skills into practice.</p></article></section>
+            <p class="ct-disclosure">Images are illustrative. Named teacher profiles will be published once verified.</p>
+            <button class="ct-primary" type="button" (click)="contact()">Ask about our teaching <span aria-hidden="true">↗</span></button>
+        </main>
+    }
+    @if (page !== 'home') {<footer class="ct-public-footer"><span>ChampTop Academy · Learn. Create. Build. Grow.</span><button type="button" (click)="privacy()">Privacy</button></footer>}
+</ion-content>
+<ion-footer class="ct-public-nav-footer">
+    <nav class="ct-public-nav" aria-label="Explore ChampTop">
+        <button type="button" (click)="select('home')" [class.ct-active]="page === 'home'" [attr.aria-current]="page === 'home' ? 'page' : null"><span aria-hidden="true">⌂</span>Home</button>
+        <button type="button" (click)="select('about')" [class.ct-active]="page === 'about'" [attr.aria-current]="page === 'about' ? 'page' : null"><span aria-hidden="true">✦</span>About</button>
+        <button type="button" (click)="select('programmes')" [class.ct-active]="page === 'programmes'" [attr.aria-current]="page === 'programmes' ? 'page' : null"><span aria-hidden="true">▦</span>Programmes</button>
+        <button type="button" (click)="select('teaching')" [class.ct-active]="page === 'teaching'" [attr.aria-current]="page === 'teaching' ? 'page' : null"><span aria-hidden="true">◎</span>Teaching</button>
+    </nav>
+</ion-footer>

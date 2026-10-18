@@ -34,6 +34,9 @@ import { CoreSharedModule } from '@/core/shared.module';
 })
 export default class CoreLoginSitesPage implements OnInit {
 
+    // CHAMPTOP_PUBLIC_WELCOME_V1
+    champtopHome(): void { void CoreNavigator.navigate('/login/champtop'); }
+
     accountsList: CoreAccountsList = {
         sameSite: [],
         otherSites: [],

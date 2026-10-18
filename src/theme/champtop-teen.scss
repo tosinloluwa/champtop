@@ -1,0 +1,184 @@
+/* CHAMPTOP_TEEN_THEME_V1 - presentation only, no app logic. */
+:root:not(.dark) {
+  --ct-ink:#14284e; --ct-muted:#52627b; --ct-page:#f3f7ff;
+  --ct-surface:#ffffff; --ct-border:#dbe5f3;
+  --ct-mint:#e5faf5; --ct-bluewash:#eaf0ff;
+  --ct-pinkwash:#fff0f5; --ct-yellowwash:#fff5d6;
+  --background-color:var(--ct-page); --ion-background-color:var(--ct-page);
+  --ion-background-color-rgb:243,247,255;
+  --text-color:var(--ct-ink); --ion-text-color:var(--ct-ink);
+  --ion-text-color-rgb:20,40,78; --subdued-text-color:var(--ct-muted);
+  --ion-item-background:var(--ct-surface); --contrast-background:var(--ct-surface);
+  --core-login-background:var(--ct-page); --core-login-text-color:var(--ct-ink);
+  --core-login-input-background:var(--ct-surface); --core-login-input-color:var(--ct-ink);
+  --core-link-color:#174dc3;
+}
+:root, :root.dark {
+  --ion-font-family:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+  --font-family:var(--ion-font-family);
+  --primary:#007d78; --primary-contrast:#ffffff; --primary-shade:#006e6a; --primary-tint:#198a86;
+  --ion-color-primary:#007d78; --ion-color-primary-rgb:0,125,120;
+  --ion-color-primary-contrast:#ffffff; --ion-color-primary-contrast-rgb:255,255,255;
+  --ion-color-primary-shade:#006e6a; --ion-color-primary-tint:#198a86;
+  --ct-teal:#007d78; --ct-blue:#2558d8; --ct-coral:#c64031; --ct-purple:#7544c4;
+  --core-header-toolbar-background:linear-gradient(115deg,#145ca8 0%,#3154bb 56%,#7146b5 100%);
+  --core-header-toolbar-color:#ffffff; --core-header-buttons-color:#ffffff;
+  --core-header-toolbar-border-color:transparent;
+  --core-progressbar-color:#007d78; --core-progressbar-background:#d5eee8;
+  --core-bottom-tabs-background:var(--ct-surface);
+  --core-bottom-tabs-color:var(--ct-muted); --core-bottom-tabs-color-selected:var(--ct-teal);
+  --core-bottom-tabs-background-selected:var(--ct-mint);
+  --core-bottom-tabs-border-color-active:var(--ct-teal);
+  --core-tabs-background:var(--ct-surface); --core-tab-border-color-active:var(--ct-teal);
+  --core-site-logo-max-height:72px;
+}
+:root.dark {
+  --ct-ink:#f0f5ff; --ct-muted:#b8c8df; --ct-page:#111b30;
+  --ct-surface:#1c2b44; --ct-border:#364967;
+  --ct-mint:#183c3a; --ct-bluewash:#22365b; --ct-pinkwash:#442c42; --ct-yellowwash:#413a25;
+  --ct-teal:#65ded0; --ct-blue:#a0bbff; --ct-coral:#ffb4a7; --ct-purple:#d5b4ff;
+  --primary:#65ded0; --primary-contrast:#102a29; --primary-shade:#59c3b7; --primary-tint:#74e1d5;
+  --ion-color-primary:#65ded0; --ion-color-primary-rgb:101,222,208;
+  --ion-color-primary-contrast:#102a29; --ion-color-primary-contrast-rgb:16,42,41;
+  --ion-color-primary-shade:#59c3b7; --ion-color-primary-tint:#74e1d5;
+  --background-color:var(--ct-page); --ion-background-color:var(--ct-page);
+  --ion-background-color-rgb:17,27,48;
+  --text-color:var(--ct-ink); --ion-text-color:var(--ct-ink); --ion-text-color-rgb:240,245,255;
+  --subdued-text-color:var(--ct-muted); --core-link-color:#a5c4ff;
+  --ion-item-background:var(--ct-surface); --contrast-background:var(--ct-surface);
+  --core-login-background:var(--ct-page); --core-login-text-color:var(--ct-ink);
+  --core-login-input-background:var(--ct-surface); --core-login-input-color:var(--ct-ink);
+  --core-progressbar-color:#65ded0; --core-progressbar-background:#284b4a;
+}
+body, ion-app { font-family:var(--ion-font-family); }
+ion-content {
+  --background:radial-gradient(ellipse at 100% 0%,var(--ct-mint),transparent 55%),
+    radial-gradient(ellipse at 0% 100%,var(--ct-bluewash),transparent 60%),var(--ct-page);
+  color:var(--ct-ink);
+}
+ion-title, ion-title h1 { font-weight:850!important; letter-spacing:-.025em; }
+ion-title h1 { font-size:1.18rem!important; line-height:1.3; }
+ion-header ion-toolbar {
+  --background:var(--core-header-toolbar-background);
+  --color:#fff; --border-color:transparent;
+}
+ion-header ion-toolbar ion-button, ion-header ion-toolbar ion-back-button { --color:#fff; }
+ion-content h1, ion-content h2, ion-content h3, ion-card-title {
+  font-weight:800!important; letter-spacing:-.025em; color:var(--ct-ink);
+}
+ion-content h1 { line-height:1.25; }
+ion-label .item-heading, ion-item .item-heading { font-weight:750!important; }
+ion-label, ion-card-content { line-height:1.5; }
+ion-item { --border-color:var(--ct-border); --detail-icon-opacity:.75; }
+ion-item ion-label { font-size:1rem; }
+ion-item-divider {
+  --background:var(--ct-bluewash); --color:var(--ct-ink);
+  font-size:1rem; font-weight:800; --padding-top:12px; --padding-bottom:12px;
+}
+ion-button {
+  --border-radius:14px; font-weight:800; letter-spacing:.005em; text-transform:none;
+}
+ion-button:not([fill="clear"]):not([fill="outline"]):not([fill="default"]):not([size="small"]) {
+  --box-shadow:0 5px 12px rgb(20 40 78 / 12%);
+}
+ion-button[expand="block"] { min-height:48px; }
+ion-button::part(native) { white-space:normal; }
+ion-searchbar {
+  --background:var(--ct-surface); --color:var(--ct-ink); --placeholder-color:var(--ct-muted);
+  --icon-color:var(--ct-teal); --border-radius:16px;
+  --box-shadow:0 5px 16px rgb(20 40 78 / 7%);
+}
+ion-chip { font-weight:700; border-radius:10px; }
+ion-card {
+  --background:var(--ct-surface); --color:var(--ct-ink);
+  border:1px solid var(--ct-border); border-radius:20px!important;
+  box-shadow:0 7px 22px rgb(20 40 78 / 7%);
+}
+/* Colourful course cards; retain real enrolment icons and action buttons. */
+core-courses-course-list-item { --ct-course-accent:var(--ct-teal); --ct-course-wash:var(--ct-mint); }
+core-courses-course-list-item:nth-of-type(4n+2) { --ct-course-accent:var(--ct-blue); --ct-course-wash:var(--ct-bluewash); }
+core-courses-course-list-item:nth-of-type(4n+3) { --ct-course-accent:var(--ct-coral); --ct-course-wash:var(--ct-pinkwash); }
+core-courses-course-list-item:nth-of-type(4n+4) { --ct-course-accent:var(--ct-purple); --ct-course-wash:var(--ct-yellowwash); }
+core-courses-course-list-item ion-card {
+  border-inline-start:6px solid var(--ct-course-accent)!important;
+  margin-block:12px!important; overflow:hidden;
+}
+core-courses-course-list-item ion-card ion-item {
+  --background:var(--ct-surface); --inner-border-width:0;
+  --padding-top:8px; --padding-bottom:8px;
+}
+core-courses-course-list-item .core-course-list-item core-course-image {
+  --core-image-size:72px!important; --core-image-radius:16px;
+}
+core-courses-course-list-item .item-heading {
+  font-size:1.06rem!important; line-height:1.45!important;
+  color:var(--ct-ink)!important; font-weight:800!important;
+  white-space:normal!important; overflow:visible!important;
+  display:block!important; -webkit-line-clamp:unset!important;
+}
+core-courses-course-list-item .core-course-category {
+  --background:var(--ct-course-wash); --color:var(--ct-course-accent);
+  background:var(--ct-course-wash)!important; color:var(--ct-course-accent)!important;
+  font-size:.75rem; font-weight:750; height:auto!important; min-height:28px;
+  padding-block:5px; max-width:100%; white-space:normal!important;
+}
+core-courses-course-list-item .core-course-category ion-label { white-space:normal!important; font-size:inherit; }
+core-courses-course-list-item .core-course-shortname { color:var(--ct-muted); }
+/* Account menu: clear hierarchy and individually coloured icon tiles. */
+core-main-menu-user-menu ion-list { padding:8px 12px!important; background:transparent!important; }
+core-main-menu-user-menu ion-item {
+  --background:var(--ct-surface); --min-height:56px;
+  --inner-border-width:0; --border-radius:15px;
+  border:1px solid var(--ct-border); border-radius:15px; margin-block:7px;
+}
+core-main-menu-user-menu .core-usermenu-siteinfo {
+  --background:linear-gradient(115deg,var(--ct-mint),var(--ct-bluewash));
+  border:0; --padding-top:14px; --padding-bottom:14px;
+}
+core-main-menu-user-menu .core-usermenu-profile { --background:var(--ct-yellowwash); }
+core-main-menu-user-menu ion-item > ion-icon[slot="start"] {
+  background:var(--ct-mint); color:var(--ct-teal)!important;
+  padding:10px; border-radius:13px; font-size:20px; margin-inline-end:12px;
+}
+core-main-menu-user-menu ion-item:nth-of-type(3n+2) > ion-icon[slot="start"] {
+  background:var(--ct-bluewash); color:var(--ct-blue)!important;
+}
+core-main-menu-user-menu ion-item:nth-of-type(3n) > ion-icon[slot="start"] {
+  background:var(--ct-pinkwash); color:var(--ct-coral)!important;
+}
+core-main-menu-user-menu .core-usermenu-siteurl { font-size:.78rem; overflow-wrap:anywhere; }
+core-main-menu-user-menu ion-footer { background:var(--ct-page); }
+/* Profile details remain real Moodle fields. */
+core-user-profile ion-list { background:transparent!important; }
+core-user-profile ion-item-group {
+  display:block; background:var(--ct-surface); border:1px solid var(--ct-border);
+  margin:14px 12px; border-radius:18px; overflow:hidden;
+}
+core-user-profile .core-user-profile-maininfo {
+  --background:linear-gradient(115deg,var(--ct-mint),var(--ct-bluewash));
+  --padding-top:20px; --padding-bottom:20px;
+  margin:12px; border-radius:20px;
+}
+core-user-profile .core-user-profile-maininfo h1 { font-size:1.5rem; font-weight:850!important; }
+core-user-profile ion-item-divider { border:0; }
+core-user-profile ion-item { --padding-top:7px; --padding-bottom:7px; }
+core-user-profile core-user-avatar { --core-avatar-size:80px; }
+core-user-avatar ion-avatar { outline:3px solid var(--ct-mint); outline-offset:3px; }
+/* Keep the existing navy/teal logo legible in either colour scheme. */
+core-site-logo .core-logo-container {
+  background:#ffffff; border-radius:16px; padding:12px;
+  width:fit-content; max-width:100%; margin-inline:auto;
+}
+core-site-logo img.core-logo { max-width:100%; object-fit:contain; }
+ion-tab-button { font-weight:750; }
+ion-tab-bar { border-top:1px solid var(--ct-border); }
+:focus-visible { outline:3px solid var(--ct-blue)!important; outline-offset:3px; }
+@media (max-width:360px) {
+  core-courses-course-list-item .core-course-list-item core-course-image { --core-image-size:54px!important; }
+  core-courses-course-list-item .item-heading { font-size:1rem!important; }
+  core-main-menu-user-menu ion-list { padding-inline:8px!important; }
+}
+@media (prefers-reduced-motion:reduce) {
+  core-courses-course-list-item ion-card { transition:none!important; }
+}
+/* END CHAMPTOP_TEEN_THEME_V1 */

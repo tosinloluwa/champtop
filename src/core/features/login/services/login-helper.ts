@@ -310,7 +310,7 @@ export class CoreLoginHelperProvider {
 
         if (sites.length === 1) {
             // Fixed URL is set, go to credentials page.
-            return ['/login/credentials', { siteUrl: sites[0].url }];
+            return ['/login/champtop', { siteUrl: sites[0].url }];
         }
 
         return ['/login/site', { showKeyboard }];

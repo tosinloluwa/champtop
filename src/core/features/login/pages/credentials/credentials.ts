@@ -25,6 +25,7 @@ import { Translate } from '@singletons';
 import { CoreSitePublicConfigResponse, CoreUnauthenticatedSite } from '@classes/sites/unauthenticated-site';
 import { CoreEventObserver, CoreEvents } from '@static/events';
 import { CoreNavigator } from '@services/navigator';
+import { CoreOpener } from '@static/opener';
 import { CoreForms } from '@static/form';
 import { CoreUserSupport } from '@features/user/services/support';
 import { CoreUserSupportConfig } from '@features/user/classes/support/support-config';
@@ -89,6 +90,12 @@ export default class CoreLoginCredentialsPage implements OnInit, OnDestroy {
     protected alwaysShowLoginFormObserver?: CoreEventObserver;
     protected loginObserver?: CoreEventObserver;
     protected fb = inject(FormBuilder);
+
+    // CHAMPTOP_PUBLIC_WELCOME_V1: navigation only; authentication is unchanged.
+    champtopHome(): void { void CoreNavigator.navigate('/login/champtop'); }
+    champtopSignup(): void {
+        void CoreOpener.openInBrowser('https://learn.champtopacademy.com/login/signup.php', { showBrowserWarning: false });
+    }
 
     constructor() {
         // Listen to LOGIN event to determine if login was successful, since the login can be done using QR, SSO, etc.

@@ -78,3 +78,16 @@ Thumbs.db
 !/moodle.config.example.json
 *.stackdump
 *- Copy.*
+
+welcome-update/
+welcome-fit-update/
+.champtop-welcome-backups/
+.champtop-welcome-fit-backups/
+*.bak
+*.bak2
+*.orig
+
+.champtop-*/
+theme-update/
+/logo.svg
+/logo-white.svg
