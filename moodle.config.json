@@ -1,6 +1,6 @@
 {
-    "app_id": "com.moodle.moodlemobile",
-    "appname": "SchoolMate",
+    "app_id": "com.champtopacademy.app",
+    "appname": "ChampTop Academy",
     "versioncode": 53000,
     "versionname": "5.3.0",
     "cache_update_frequency_usually": 420000,
@@ -86,19 +86,19 @@
         "medium": 110,
         "high": 120
     },
-    "customurlscheme": "moodlemobile",
+    "customurlscheme": "champtop",
     "sites": [
         {
-            "url": "https://sylmultimedia.com/m",
-            "name": "Schoolmate"
+            "url": "https://learn.champtopacademy.com",
+            "name": "ChampTop Academy"
         }
     ],
     "multisitesdisplay": "",
     "sitefindersettings": {},
     "onlyallowlistedsites": false,
     "forcedefaultlanguage": false,
-    "privacypolicy": "https://moodle.net/moodle-app-privacy/",
-    "notificoncolor": "#f98012",
+    "privacypolicy": "https://champtopacademy.com/privacy.html",
+    "notificoncolor": "#08b9b1",
     "enableanalytics": false,
     "forceColorScheme": "",
     "forceLoginLogo": false,
