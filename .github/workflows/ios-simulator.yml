@@ -1,0 +1,90 @@
+name: iOS simulator build
+
+# Manual only: macOS runner minutes cost much more than Linux ones.
+# Run it from the Actions tab -> "iOS simulator build" -> "Run workflow".
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 60
+    env:
+      CI: "true"
+      NODE_OPTIONS: --max-old-space-size=6144
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.16.0"
+          cache: npm
+
+      - name: Show tool versions
+        run: |
+          node -v
+          xcodebuild -version
+          pod --version || true
+          ruby -v
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate env, language and icon files
+        run: npx gulp
+
+      - name: Placeholder GoogleService-Info.plist (build only, if the project needs one and has none)
+        run: |
+          if grep -q "GoogleService-Info" config.xml && [ ! -f GoogleService-Info.plist ]; then
+            echo "config.xml needs GoogleService-Info.plist and none is in the repo: writing a PLACEHOLDER so the simulator build can compile."
+            cat > GoogleService-Info.plist <<'PLIST'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>API_KEY</key><string>placeholder-not-a-real-key</string>
+            <key>GCM_SENDER_ID</key><string>000000000000</string>
+            <key>PLIST_VERSION</key><string>1</string>
+            <key>BUNDLE_ID</key><string>com.champtopacademy.app</string>
+            <key>PROJECT_ID</key><string>placeholder</string>
+            <key>STORAGE_BUCKET</key><string>placeholder.appspot.com</string>
+            <key>IS_ADS_ENABLED</key><false/>
+            <key>IS_ANALYTICS_ENABLED</key><false/>
+            <key>IS_APPINVITE_ENABLED</key><false/>
+            <key>IS_GCM_ENABLED</key><true/>
+            <key>IS_SIGNIN_ENABLED</key><false/>
+            <key>GOOGLE_APP_ID</key><string>1:000000000000:ios:0000000000000000</string>
+          </dict>
+          </plist>
+          PLIST
+          else
+            echo "No placeholder needed."
+          fi
+
+      - name: Add the iOS platform
+        run: |
+          mkdir -p www
+          if [ ! -d platforms/ios ]; then npx cordova platform add ios; fi
+
+      - name: Build the web app and prepare iOS
+        run: npx ionic cordova prepare ios --prod --no-interactive
+
+      - name: Build for the iOS simulator (no signing needed)
+        run: npx cordova build ios --emulator
+
+      - name: Show what was built
+        run: find platforms/ios/build -maxdepth 3 -name "*.app" -print || true
+
+      - name: Upload the simulator app
+        uses: actions/upload-artifact@v4
+        with:
+          name: champtop-ios-simulator-app
+          path: platforms/ios/build/emulator/
+          if-no-files-found: warn
+          retention-days: 14
