@@ -76,7 +76,14 @@ jobs:
         run: npx ionic cordova prepare ios --prod --no-interactive
 
       - name: Build for the iOS simulator (no signing needed)
-        run: npx cordova build ios --emulator
+        run: |
+          set -o pipefail
+          npx cordova build ios --emulator 2>&1 | tee build.log
+
+      - name: Show the real errors
+        if: failure()
+        run: |
+          grep -nE "error:|BUILD FAILED|Signing for|requires a development team|Undefined symbol|ld: " build.log | head -60 || true
 
       - name: Show what was built
         run: find platforms/ios/build -maxdepth 3 -name "*.app" -print || true
